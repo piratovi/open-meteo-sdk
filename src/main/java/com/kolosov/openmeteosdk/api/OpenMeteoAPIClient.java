@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.service.annotation.GetExchange;
 
 import java.math.BigDecimal;
-import java.time.ZoneId;
 import java.util.List;
 
 //TODO Deal with constant RequestParams
@@ -32,6 +31,6 @@ public interface OpenMeteoAPIClient {
     );
 
     default OpenMeteoResponse getRawForecast(BigDecimal latitude, BigDecimal longitude) {
-        return getRawForecast(latitude, longitude, hourly, ZoneId.systemDefault().getId());
+        return getRawForecast(latitude, longitude, hourly, "Asia/Bangkok");
     }
 }
