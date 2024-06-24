@@ -7,10 +7,12 @@ plugins {
 }
 
 group = 'com.kolosov'
-version = '0.0.3'
+version = '0.0.4'
 
 java {
     sourceCompatibility = '21'
+    withJavadocJar()
+    withSourcesJar()
 }
 
 configurations {
@@ -21,20 +23,26 @@ configurations {
 
 repositories {
     mavenCentral()
-    mavenLocal()
 }
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        myS3RepoPublication(MavenPublication) { // Choose a descriptive name
             groupId = project.group.toString()
-            artifactId = project.name // Use the subproject name as the artifact ID
+            artifactId = project.name
             version = project.version.toString()
             from components.java
         }
     }
     repositories {
-        mavenLocal()
+        maven {
+            name = "myS3Repo"
+            url = "s3://piratovi-artifacts"
+            credentials(AwsCredentials) {
+                accessKey = System.getenv('AWS_ACCESS_KEY_AOL')
+                secretKey = System.getenv('AWS_ACCESS_SECRET_AOL')
+            }
+        }
     }
 }
 
