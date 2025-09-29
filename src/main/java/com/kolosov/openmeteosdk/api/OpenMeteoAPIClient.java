@@ -30,7 +30,7 @@ public interface OpenMeteoAPIClient {
             @RequestParam("timezone") String timezone
     );
 
-    default OpenMeteoResponse getRawForecast(BigDecimal latitude, BigDecimal longitude) {
-        return getRawForecast(latitude, longitude, hourly, "Asia/Bangkok");
+    default OpenMeteoResponse getRawForecast(BigDecimal latitude, BigDecimal longitude, String timezone) {
+        return getRawForecast(latitude, longitude, hourly, timezone);
     }
 }

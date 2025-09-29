@@ -1,6 +1,5 @@
 package com.kolosov.openmeteosdk;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kolosov.openmeteosdk.api.WeatherDayData;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -27,7 +26,7 @@ class OpenMeteoServiceTest {
         // setup
 
         // act
-        SortedSet<WeatherDayData> weekForecast = service.getWeekForecast(Location.pickleball());
+        SortedSet<WeatherDayData> weekForecast = service.getWeekForecast(Location.pickleball(), "Asia/Bangkok");
         assertThat(weekForecast).hasSize(7);
         System.out.println(formatForecast(weekForecast));
 

@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.kolosov'
-version = '0.0.8'
+version = '0.0.9'
 
 ext {
     mapstructVersion = '1.6.3'

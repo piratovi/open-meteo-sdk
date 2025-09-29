@@ -22,8 +22,8 @@ public class OpenMeteoService {
     private final OpenMeteoAPIClient client;
     private final OpenMeteoMapper mapper;
 
-    public SortedSet<WeatherDayData> getWeekForecast(Location location) {
-        var openMeteoResponse = client.getRawForecast(location.latitude(), location.longitude());
+    public SortedSet<WeatherDayData> getWeekForecast(Location location, String timezone) {
+        var openMeteoResponse = client.getRawForecast(location.latitude(), location.longitude(), timezone);
         return groupHourlyForecastsByDay(openMeteoResponse.hourly());
     }
 
