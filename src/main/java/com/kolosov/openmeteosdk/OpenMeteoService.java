@@ -6,7 +6,6 @@ import com.kolosov.openmeteosdk.api.WeatherDayData;
 import com.kolosov.openmeteosdk.api.WeatherDayData.WeatherHourData;
 import com.kolosov.openmeteosdk.mapper.OpenMeteoMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -17,7 +16,6 @@ import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toCollection;
 
-@Service
 @RequiredArgsConstructor
 public class OpenMeteoService {
 

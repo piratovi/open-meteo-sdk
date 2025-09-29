@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.kolosov'
-version = '0.0.6'
+version = '0.0.8'
 
 ext {
     mapstructVersion = '1.6.3'
@@ -54,7 +54,11 @@ publishing {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // Use lightweight Spring Web + Boot autoconfigure for library
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    implementation 'org.springframework:spring-web'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 
     // MapStruct
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
@@ -62,6 +66,9 @@ dependencies {
 
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    // Spring Boot configuration metadata for @ConfigurationProperties (optional but helpful)
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
     // Lombok for test scope
     testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
