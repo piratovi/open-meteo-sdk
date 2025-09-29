@@ -11,6 +11,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.SortedSet;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest()
@@ -26,6 +28,7 @@ class OpenMeteoServiceTest {
 
         // act
         SortedSet<WeatherDayData> weekForecast = service.getWeekForecast(Location.pickleball());
+        assertThat(weekForecast).hasSize(7);
         System.out.println(formatForecast(weekForecast));
 
         // verify
