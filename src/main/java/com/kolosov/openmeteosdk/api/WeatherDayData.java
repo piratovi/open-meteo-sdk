@@ -1,5 +1,6 @@
 package com.kolosov.openmeteosdk.api;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.SortedSet;
@@ -16,14 +17,14 @@ public record WeatherDayData(
 
     public record WeatherHourData(
             LocalTime time,
-            double precipitation,
-            double temperature,
-            double apparentTemperature,
-            int relativeHumidity,
-            int cloudCover,
-            int precipitationProbability,
-            double windSpeed,
-            double windGusts
+            BigDecimal precipitation,
+            BigDecimal temperature,
+            BigDecimal apparentTemperature,
+            BigDecimal relativeHumidity,
+            BigDecimal cloudCover,
+            BigDecimal precipitationProbability,
+            BigDecimal windSpeed,
+            BigDecimal windGusts
     ) implements Comparable<WeatherHourData> {
 
         @Override

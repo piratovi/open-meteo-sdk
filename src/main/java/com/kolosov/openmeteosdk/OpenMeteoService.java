@@ -7,6 +7,7 @@ import com.kolosov.openmeteosdk.api.WeatherDayData.WeatherHourData;
 import com.kolosov.openmeteosdk.mapper.OpenMeteoMapper;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.SortedSet;
@@ -23,7 +24,11 @@ public class OpenMeteoService {
     private final OpenMeteoMapper mapper;
 
     public SortedSet<WeatherDayData> getWeekForecast(Location location, String timezone) {
-        var openMeteoResponse = client.getRawForecast(location.latitude(), location.longitude(), timezone);
+        return getWeatherDayData(location.latitude(), location.longitude(), timezone);
+    }
+
+    public SortedSet<WeatherDayData> getWeatherDayData(BigDecimal latitude, BigDecimal longitude, String timezone) {
+        var openMeteoResponse = client.getRawForecast(latitude, longitude, timezone);
         return groupHourlyForecastsByDay(openMeteoResponse.hourly());
     }
 
